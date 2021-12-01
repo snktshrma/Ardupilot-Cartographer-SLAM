@@ -9,6 +9,7 @@ Cartographer slam is a combination of two connected subsystem, Local SLAM and Gl
 LIDAR for depth information of the environment, IMU, GPS(optional)
 
 ### Local SLAM: 
+
 `<install_isolated/share/cartographer/configuration_files/trajectory_builder_2d.lua>`
 
 Local SLAM tries to insert a new node into the current submap created as a result of multiple past filtered scans. It does so by scan matching using initial guess from extrapolating the pose to predict future pose. 
@@ -23,6 +24,7 @@ If sensors are trustworthy enough, then this method is preferred.
 Many filters like motion filter, voxel filter, bandpass filter, etc to refine the inputs to the SLAM model.
 
 ### Global SLAM: 
+
  `<install_isolated/share/cartographer/configuration_files/pose_graph.lua>`
 
 Global SLAM arranges the submaps from local SLAM to form a coherent global map. Global SLAM is a pose graph optimization technique, trying to find optimum loop closure to form the map. Global SLAM uses subsampled set of nodes to limit the constraints and computational use.
@@ -110,7 +112,8 @@ Modify the robot_pose_publisher.cpp file
     cd $HOME/ardupilot_ws/src/robot_pose_publisher/src
     gedit robot_pose_publisher.cpp
 
-modify line 40 to look like below ("false" has been changed to "true")
+Modify line 40 to look like below ("false" has been changed to "true")
+
 `nh_priv.param<bool>("is_stamped", is_stamped, true);`
 
 2. Edit the cartgrapher_ros package:
