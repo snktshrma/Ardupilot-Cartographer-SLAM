@@ -46,16 +46,13 @@ The cartographer slams has many optimization algorithm and uses other loop closu
 ### Tuning Cartographer SLAM:
 
 1. Turn of global SLAM:
-Turn off global SLAM to concentrate of local SLAM only for tuning pupose. <POSE_GRAPH.optimize_every_n_nodes = 0>
-
-
-
+Turn off global SLAM to concentrate of local SLAM only for tuning pupose. `<POSE_GRAPH.optimize_every_n_nodes = 0>`
 
 2. Tuning size of submaps:
-If size of submaps is not within the constraints set, then using <TRAJECTORY_BUILDER_2D.submaps.num_range_data> parameter, we can set the size of submaps.
+If size of submaps is not within the constraints set, then using `<TRAJECTORY_BUILDER_2D.submaps.num_range_data>` parameter, we can set the size of submaps.
 
 3. Tuning CeresScanMatcher:
-To tune this parameter, we have <TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight> and <rotation_weight>. We use them to penalize the situation by making scan to deviate more from the prior. Concepts of CeresScanMatcher are described above in local SLAM.
+To tune this parameter, we have `<TRAJECTORY_BUILDER_2D.ceres_scan_matcher.translation_weight>` and `<rotation_weight>`. We use them to penalize the situation by making scan to deviate more from the prior. Concepts of CeresScanMatcher are described above in local SLAM.
 We can set them accordingly to tune CeresScanMatcher to get a reasonable result.
 
 4. Verification:
@@ -106,6 +103,7 @@ To build and install the package, execute the following commands:
     cd ardupilot_ws/src
     git clone https://github.com/GT-RAIL/robot_pose_publisher.git
     For detailed instructions, https://ardupilot.org/dev/docs/ros-cartographer-slam.html
+    
 1. Now edit robot_pose_publised package as:
 Modify the robot_pose_publisher.cpp file
 
@@ -121,6 +119,7 @@ Create the cartographer_ros launch file:
 
     cd $HOME/ardupilot_ws/src/cartographer_ros/cartographer_ros/launch
     gedit cartographer.launch
+    
 Copy-paste the contents below into the file
 
     <?xml version="1.0"?>
