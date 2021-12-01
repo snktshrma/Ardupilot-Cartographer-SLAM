@@ -9,7 +9,7 @@ Cartographer slam is a combination of two connected subsystem, Local SLAM and Gl
 LIDAR for depth information of the environment, IMU, GPS(optional)
 
 ### Local SLAM: 
-<install_isolated/share/cartographer/configuration_files/trajectory_builder_2d.lua>
+`<install_isolated/share/cartographer/configuration_files/trajectory_builder_2d.lua>`
 
 Local SLAM tries to insert a new node into the current submap created as a result of multiple past filtered scans. It does so by scan matching using initial guess from extrapolating the pose to predict future pose. 
 Scan matching is done by:
@@ -23,7 +23,7 @@ If sensors are trustworthy enough, then this method is preferred.
 Many filters like motion filter, voxel filter, bandpass filter, etc to refine the inputs to the SLAM model.
 
 ### Global SLAM: 
- <install_isolated/share/cartographer/configuration_files/pose_graph.lua>
+ `<install_isolated/share/cartographer/configuration_files/pose_graph.lua>`
 
 Global SLAM arranges the submaps from local SLAM to form a coherent global map. Global SLAM is a pose graph optimization technique, trying to find optimum loop closure to form the map. Global SLAM uses subsampled set of nodes to limit the constraints and computational use.
 
@@ -42,6 +42,7 @@ The cartographer slams has many optimization algorithm and uses other loop closu
 
 
 ### Tuning Cartographer SLAM:
+
 1. Turn of global SLAM:
 Turn off global SLAM to concentrate of local SLAM only for tuning pupose. <POSE_GRAPH.optimize_every_n_nodes = 0>
 
