@@ -107,8 +107,9 @@ To build and install the package, execute the following commands:
 1. Now edit robot_pose_publised package as:
 Modify the robot_pose_publisher.cpp file
 
-    cd $HOME/ardupilot_ws/src/robot_pose_publisher/src
-    gedit robot_pose_publisher.cpp
+`cd $HOME/ardupilot_ws/src/robot_pose_publisher/src`
+
+`gedit robot_pose_publisher.cpp`
 
 Modify line 40 to look like below ("false" has been changed to "true")
 
@@ -117,8 +118,9 @@ Modify line 40 to look like below ("false" has been changed to "true")
 2. Edit the cartgrapher_ros package:
 Create the cartographer_ros launch file:
 
-    cd $HOME/ardupilot_ws/src/cartographer_ros/cartographer_ros/launch
-    gedit cartographer.launch
+`cd $HOME/ardupilot_ws/src/cartographer_ros/cartographer_ros/launch`
+
+`gedit cartographer.launch`
     
 Copy-paste the contents below into the file
 
