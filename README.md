@@ -1,5 +1,5 @@
 # Cartographer-documentation
-(All the changes to be done in files will be uploaded as a whole)
+(All the changes mentioned here under are already done in the uploaded files)
 
 ## Cartographer SLAM
 
