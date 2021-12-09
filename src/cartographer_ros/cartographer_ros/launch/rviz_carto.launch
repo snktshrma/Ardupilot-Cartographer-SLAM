@@ -1,0 +1,5 @@
+<launch>
+  <param name="use_gui" value="true"/>
+  <arg name="config" default="gmapping" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find catographer_ros)/rviz/$(arg config).rviz" />
+</launch>
