@@ -205,7 +205,54 @@ Copy-paste the contents below into the file
       POSE_GRAPH.optimize_every_n_nodes = 30
 
       return options
+ 
+## Controlling from RVIZ:
+ 
+To allow ROS to send setpoints to ArduPilot via mavros using RVIZ, modify node.launch file
+ 
+      roscd mavros
+      cd launch
+      sudo gedit node.launch
+ 
+After ` <rosparam command=”load” file=”$(arg config_yaml)” >` line, add `<remap from="/mavros/setpoint_position/local" to="/move_base_simple/goal" /> `
+ 
+## Obstacle Avoidance:
 
+To allow ROS to send velocity targets to ArduPilot via mavros, modify node.launch file
+ 
+      roscd mavros
+      cd launch
+      sudo gedit node.launch
+ 
+After ` <rosparam command=”load” file=”$(arg config_yaml)” >` line, add `<remap from="/mavros/setpoint_velocity/cmd_vel_unstamped" to="/cmd_vel" /> `
 
+Then install necessary packages:
+
+      sudo apt-get install ros-kinetic-navigation
+      cd ~/ardupilot_ws/src
+      wget https://github.com/ArduPilot/companion/raw/master/Common/ROS/ap_navigation.zip
+      unzip ap_navigation.zip
+ 
+      #Rebuild the packages
+      cd ~/ardupilot_ws
+      source devel/setup.bash
+      catkin build
+
+## Run:
+('T' represents terminal)
+
+     T1: roslaunch gzbo.launch
+     T2: ../Tools/autotest/sim_vehicle.py -f gazebo-iris
+     T3: roslaunch apm.launch
+     T4: roslaunch cartographer_ros cartographer.launch
+     T5: rosrun rviz rviz
+ 
+     # After arming and taking-off, run the following in different terminals:
+ 
+     T6: roslaunch ap_navigation ap_nav.launch
+     T7: rostopic pub /move_base_simple/goal geometry_msgs/PoseStamped '{header: {stamp: now, frame_id: "map"}, pose: {position: {x: 0.0, y: 6.0, z: 5.0}, orientation: {w: 1.0}}}' 
+ 
+
+ 
 ### Archive:
 Earlier documentations: https://github.com/snktshrma/Cartographer-documentation/tree/past_updates
